@@ -1,4 +1,4 @@
-package com.shivnasoft.cheetahlist.feature_shoppinglists.presentation.components
+package com.shivnasoft.compose_components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

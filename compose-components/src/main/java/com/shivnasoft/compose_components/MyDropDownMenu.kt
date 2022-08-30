@@ -1,4 +1,4 @@
-package com.shivnasoft.cheetahlist.feature_shoppinglists.presentation.components
+package com.shivnasoft.compose_components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
