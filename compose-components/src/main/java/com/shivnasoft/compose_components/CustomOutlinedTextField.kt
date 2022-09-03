@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,11 +18,13 @@ fun CustomOutlinedTextField(
     modifier: Modifier = Modifier,
     label: String = "",
     inputVal: String,
+    textStyle: TextStyle = TextStyle(Color.Black),
     colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     isSingleLine: Boolean = false,
     maxLines: Int = 0,
     isError: Boolean = false,
-    isNameError: Boolean = false,
+    isErrorMessage: Boolean = false,
+    errorTextMessage: String = "",
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -34,8 +37,8 @@ fun CustomOutlinedTextField(
                 onValChange(it)
             },
             label = { Text(text = label) },
-            //colors = colors,
-            textStyle = TextStyle(Color.Black),
+            colors = colors,
+            textStyle = textStyle,
             singleLine = isSingleLine,
             maxLines = maxLines,
             isError = isError,
@@ -45,9 +48,9 @@ fun CustomOutlinedTextField(
             modifier = modifier
         )
 
-        if (isNameError) {
+        if (isErrorMessage) {
             Text(
-                text = "Name is required.",
+                text = errorTextMessage,
                 color = MaterialTheme.colors.error,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(start = 5.dp)

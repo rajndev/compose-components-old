@@ -69,6 +69,10 @@ dependencies {
     implementation Compose.androidx_compose_compiler
     implementation AndroidX.navigation_runtime
     implementation Google.navigation_animation
+    implementation Images.image_utils
+
+    //IMAGES
+    implementation Images.coil
 
     testImplementation Tests.junit
     androidTestImplementation Tests.androidx_junit

@@ -19,7 +19,28 @@ fun AppBarAction(
     contentDescription: String = "",
     onClick: () -> Unit = { }
 ) {
-    painter?.let {
+    when {
+        painter != null ->
+            IconButton(onClick = onClick) {
+                Icon(
+                    painter = painter,
+                    modifier = Modifier.size(27.dp).then(modifier),
+                    tint = iconColor,
+                    contentDescription = contentDescription
+                )
+            }
+
+        imageVector != null -> IconButton(onClick = onClick) {
+            Icon(
+                imageVector = imageVector,
+                modifier = Modifier.size(27.dp).then(modifier),
+                tint = iconColor,
+                contentDescription = contentDescription
+            )
+        }
+    }
+
+    /*painter?.let {
         IconButton(onClick = onClick) {
             Icon(
                 painter = painter,
@@ -39,5 +60,5 @@ fun AppBarAction(
                 contentDescription = contentDescription
             )
         }
-    }
+    }*/
 }

@@ -38,7 +38,7 @@ fun TotalPill(
         Icon(
             painter = painterResource(id = R.drawable.ic_outline_receipt_long_40),
             tint = Color.White,
-            contentDescription = "receipt icon",
+            contentDescription = "Receipt icon",
             modifier = Modifier
                 .size(25.dp)
                 .padding(end = 3.dp, start = 5.dp)
@@ -59,10 +59,4 @@ fun TotalPill(
             color = Color.White
         )
     }
-}
-
-@Preview
-@Composable
-fun TotalPillPreview() {
-    TotalPill(itemTotalAmount = "35.32")
 }
