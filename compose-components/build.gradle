@@ -69,7 +69,8 @@ dependencies {
     implementation Compose.androidx_compose_compiler
     implementation AndroidX.navigation_runtime
     implementation Google.navigation_animation
-    implementation Images.image_utils
+    implementation Utils.uri2file_utils
+    implementation Utils.image_compressor
 
     //IMAGES
     implementation Images.coil
@@ -89,7 +90,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.rajndev'
                 artifactId = 'compose-components'
-                version = '1.0.3'
+                version = '1.1.0'
             }
         }
     }

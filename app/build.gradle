@@ -43,6 +43,11 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    configurations {
+        all {
+            exclude group: "androidx.appcompat", module: "appcompat-resources"
+        }
+    }
 }
 
 dependencies {

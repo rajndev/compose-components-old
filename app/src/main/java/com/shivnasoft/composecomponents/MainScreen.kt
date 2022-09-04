@@ -81,7 +81,7 @@ fun MainScreen() {
                     imageModifier = Modifier.padding(4.dp),
                     imageContainerModifier = Modifier
                         .padding(10.dp)
-                        .fillMaxWidth()
+                        .fillMaxSize()
                         .border(1.dp, Color.Gray.copy(alpha = 0.23f))
                         .background(Color.White),
                     imageUri = editedImageUri.value,
