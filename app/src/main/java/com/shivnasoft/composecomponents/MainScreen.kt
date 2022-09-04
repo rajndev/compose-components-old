@@ -1,4 +1,4 @@
-package com.shivnasoft
+package com.shivnasoft.composecomponents
 
 import android.net.Uri
 import android.widget.Toast
@@ -21,10 +21,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.shivnasoft.compose_components.AppImage
-import com.shivnasoft.composecomponents.R
-import com.shivnasoft.images.ImageDialog
+import com.shivnasoft.compose_components.ImageDialog
 
 @Composable
 fun MainScreen() {
@@ -64,13 +62,12 @@ fun MainScreen() {
             .fillMaxWidth()
             .padding(top = 16.dp, bottom = 90.dp, start = 16.dp, end = 16.dp)
     )
-    {/*
-        Button(onClick = {
+    {
+        /*Button(onClick = {
             navController.navigate(NavScreens.ThumbnailScreen.route)
         }) {
             Text(text = "Goto permissions screen")
         }*/
-
 
         Box(
             contentAlignment = Alignment.Center,

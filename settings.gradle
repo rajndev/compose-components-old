@@ -10,9 +10,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://jitpack.io'
+            allowInsecureProtocol = true
+        }
     }
 }
+
 rootProject.name = "ComposeComponents"
 include ':app'
 include ':compose-components'
