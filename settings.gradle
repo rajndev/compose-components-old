@@ -10,10 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://jitpack.io'
-            allowInsecureProtocol = true
-        }
+        maven { url 'https://jitpack.io' }
     }
 }
 

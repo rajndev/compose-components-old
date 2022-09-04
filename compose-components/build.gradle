@@ -89,7 +89,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.rajndev'
                 artifactId = 'compose-components'
-                version = '1.0.2'
+                version = '1.0.3'
             }
         }
     }
