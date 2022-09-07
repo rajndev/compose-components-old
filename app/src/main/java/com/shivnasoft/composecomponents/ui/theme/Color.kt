@@ -1,4 +1,4 @@
-package com.shivnasoft.composeprogressbars.ui.theme
+package com.shivnasoft.composecomponents.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

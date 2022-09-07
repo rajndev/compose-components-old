@@ -25,9 +25,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import com.shivnasoft.compose_components.CustomAppBar
-import com.shivnasoft.compose_components.DropdownMenuField
-import com.shivnasoft.composeprogressbars.ui.theme.ComposeComponentsTheme
+import com.shivnasoft.compose_components.appbars.CustomAppBar
+import com.shivnasoft.compose_components.forms.DropdownMenuField
+import com.shivnasoft.composecomponents.ui.theme.ComposeComponentsTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

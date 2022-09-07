@@ -1,4 +1,4 @@
-package com.shivnasoft.compose_components
+package com.shivnasoft.compose_components.images
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageScope
+import com.shivnasoft.compose_components.R
 
 @Composable
 fun AppImage(

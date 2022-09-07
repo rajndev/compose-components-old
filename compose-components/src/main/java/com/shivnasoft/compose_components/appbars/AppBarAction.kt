@@ -1,6 +1,5 @@
-package com.shivnasoft.compose_components
+package com.shivnasoft.compose_components.appbars
 
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -8,7 +7,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppBarAction(
@@ -24,7 +22,7 @@ fun AppBarAction(
             IconButton(onClick = onClick) {
                 Icon(
                     painter = painter,
-                    modifier = Modifier.size(27.dp).then(modifier),
+                    modifier = modifier,
                     tint = iconColor,
                     contentDescription = contentDescription
                 )
@@ -33,7 +31,7 @@ fun AppBarAction(
         imageVector != null -> IconButton(onClick = onClick) {
             Icon(
                 imageVector = imageVector,
-                modifier = Modifier.size(27.dp).then(modifier),
+                modifier = modifier,
                 tint = iconColor,
                 contentDescription = contentDescription
             )

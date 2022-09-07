@@ -1,4 +1,4 @@
-package com.shivnasoft.compose_components
+package com.shivnasoft.compose_components.images
 
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -29,7 +29,7 @@ import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageScope
-import com.shivnasoft.image_utils.MetricsUtils
+import com.shivnasoft.compose_components.images.image_utils.MetricsUtils
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

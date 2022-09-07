@@ -1,4 +1,4 @@
-package com.shivnasoft.image_utils
+package com.shivnasoft.compose_components.images.image_utils
 
 import android.content.Context
 import android.content.res.Resources

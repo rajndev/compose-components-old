@@ -1,4 +1,4 @@
-package com.shivnasoft.composeprogressbars.ui.theme
+package com.shivnasoft.composecomponents.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

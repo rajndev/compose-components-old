@@ -1,13 +1,11 @@
-package com.shivnasoft.compose_components
+package com.shivnasoft.compose_components.appbars
 
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
-import androidx.compose.material3.AlertDialogDefaults.titleContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -15,7 +13,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
@@ -45,26 +42,29 @@ fun CustomAppBar(
             containerColor = containerBackGroundColor,
             titleContentColor = titleContentColor
         ),
-        navigationIcon = if (navController?.previousBackStackEntry != null) {
-            {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back"
-                    )
-                }
-            }
-        } else {
-            {
-                IconButton(onClick = {
-                    scope.launch {
-                        scaffoldState?.drawerState?.open()
+        navigationIcon =
+        {
+            when {
+                navController?.previousBackStackEntry != null -> {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Go back"
+                        )
                     }
-                }) {
-                    Icon(
-                        Icons.Filled.Menu,
-                        contentDescription = "Nav drawer icon",
-                    )
+                }
+
+                scaffoldState != null -> {
+                    IconButton(onClick = {
+                        scope.launch {
+                            scaffoldState.drawerState.open()
+                        }
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = "Navigation drawer"
+                        )
+                    }
                 }
             }
         },

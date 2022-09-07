@@ -21,8 +21,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.shivnasoft.compose_components.AppImage
-import com.shivnasoft.compose_components.ImageDialog
+import com.shivnasoft.compose_components.images.AppImage
+import com.shivnasoft.compose_components.images.ImageDialog
 
 @Composable
 fun MainScreen() {
