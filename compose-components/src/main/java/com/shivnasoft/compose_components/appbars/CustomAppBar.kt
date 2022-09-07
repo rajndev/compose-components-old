@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
@@ -21,6 +22,8 @@ import kotlinx.coroutines.launch
 fun CustomAppBar(
     title: String,
     titleContentColor: Color = Color.Black,
+    titleModifier: Modifier = Modifier,
+    titleFontSize: TextUnit = TextUnit.Unspecified,
     containerBackGroundColor: Color = Color.White,
     appBarElevation: Dp = Dp.Unspecified,
     actions: @Composable () -> Unit = { },
@@ -34,6 +37,8 @@ fun CustomAppBar(
         title = {
             Text(
                 title,
+                modifier = titleModifier,
+                fontSize = titleFontSize,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

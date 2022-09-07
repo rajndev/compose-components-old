@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.shivnasoft.compose_components.appbars.CustomAppBar
@@ -48,6 +49,7 @@ class MainActivity : ComponentActivity() {
                         CustomAppBar(
                             appBarElevation = 4.dp,
                             title = "Testing Bar",
+                            titleFontSize = 21.sp,
                             actions = {
                                 IconButton(onClick = { /* doSomething() */ }) {
                                     Icon(
