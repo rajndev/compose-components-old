@@ -62,7 +62,6 @@ dependencies {
     implementation Ktx.core_ktx
     implementation Compose.compose_ui
     implementation Compose.compose_material
-    implementation Compose.compose_material3
     implementation Compose.compose_tooling
     implementation Ktx.lifecycle_runtime
     implementation Compose.activity_compose
@@ -90,7 +89,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.rajndev'
                 artifactId = 'compose-components'
-                version = '1.4.0'
+                version = '1.5.0'
             }
         }
     }

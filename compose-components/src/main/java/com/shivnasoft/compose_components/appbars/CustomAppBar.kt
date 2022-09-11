@@ -1,30 +1,29 @@
 package com.shivnasoft.compose_components.appbars
 
-import androidx.compose.material.IconButton
-import androidx.compose.material.ScaffoldState
+import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomAppBar(
     title: String,
-    titleContentColor: Color = Color.Black,
     titleModifier: Modifier = Modifier,
+    titleColor: Color = Color.Black,
     titleFontSize: TextUnit = TextUnit.Unspecified,
-    containerBackGroundColor: Color = Color.White,
+    titleTextStyle: TextStyle = MaterialTheme.typography.h6,
+    backgroundColor: Color = Color.White,
     appBarElevation: Dp = Dp.Unspecified,
     actions: @Composable () -> Unit = { },
     navController: NavController? = null,
@@ -32,21 +31,20 @@ fun CustomAppBar(
 ) {
     val scope = rememberCoroutineScope()
 
-    SmallTopAppBar(
-        modifier = Modifier.shadow(elevation = appBarElevation),
+    TopAppBar(
         title = {
             Text(
-                title,
+                text = title,
                 modifier = titleModifier,
                 fontSize = titleFontSize,
+                style = titleTextStyle,
+                color = titleColor,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = containerBackGroundColor,
-            titleContentColor = titleContentColor
-        ),
+        backgroundColor = backgroundColor,
+        elevation = appBarElevation,
         navigationIcon =
         {
             when {

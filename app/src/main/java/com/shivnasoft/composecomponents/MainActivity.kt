@@ -6,24 +6,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.DrawerValue
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.rememberDrawerState
-import androidx.compose.material.rememberScaffoldState
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.shivnasoft.compose_components.appbars.CustomAppBar
@@ -32,7 +23,7 @@ import com.shivnasoft.composecomponents.ui.theme.ComposeComponentsTheme
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-    @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         lateinit var navController: NavHostController
 
@@ -48,8 +39,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         CustomAppBar(
                             appBarElevation = 4.dp,
-                            title = "Testing Bar",
-                            titleFontSize = 21.sp,
+                            title = "Main screen",
                             actions = {
                                 IconButton(onClick = { /* doSomething() */ }) {
                                     Icon(
@@ -63,7 +53,6 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     content = {
-
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
@@ -149,7 +138,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+/*
+
 @Composable
 fun SimpleSmallTopAppBar() {
     Scaffold(
@@ -163,7 +153,9 @@ fun SimpleSmallTopAppBar() {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* doSomething() */ }) {
+                    IconButton(onClick = { */
+/* doSomething() *//*
+ }) {
                         Icon(
                             imageVector = Icons.Filled.Menu,
                             contentDescription = "Localized description"
@@ -171,7 +163,9 @@ fun SimpleSmallTopAppBar() {
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* doSomething() */ }) {
+                    IconButton(onClick = { */
+/* doSomething() *//*
+ }) {
                         Icon(
                             imageVector = Icons.Filled.Favorite,
                             contentDescription = "Localized description"
@@ -198,4 +192,4 @@ fun SimpleSmallTopAppBar() {
             }
         }
     )
-}
+}*/

@@ -5,14 +5,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
@@ -30,7 +31,6 @@ import com.shivnasoft.compose_components.R
 fun AppImage(
     cardModifier: Modifier,
     cardElevationAmount: Dp,
-    cardContainerBackgroundColor: Color = White,
     imageModifier: Modifier = Modifier,
     imageContainerModifier: Modifier = Modifier,
     imageUri: Uri = Uri.EMPTY,
@@ -49,10 +49,7 @@ fun AppImage(
     Box(modifier = Modifier.padding((iconSize / 2))) {
         Card(
             modifier = cardModifier,
-            colors = CardDefaults.cardColors(
-                containerColor =  cardContainerBackgroundColor
-            ),
-            elevation = CardDefaults.cardElevation(cardElevationAmount)
+            elevation = cardElevationAmount
         ) {
             Column(
                 modifier = imageContainerModifier

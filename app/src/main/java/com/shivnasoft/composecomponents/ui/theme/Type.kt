@@ -1,11 +1,9 @@
 package com.shivnasoft.composecomponents.ui.theme
 
-import androidx.compose.material3.Typography
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.shivnasoft.composecomponents.R
 
 val jostFontFamily = FontFamily(
@@ -18,15 +16,8 @@ val jostFontFamily = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-
-    displayLarge = TextStyle(
-        fontFamily = jostFontFamily,
-        fontWeight = FontWeight.Light,
-        fontSize = 57.sp,
-        lineHeight = 64.sp,
-        letterSpacing = 0.sp
-    ),
-    displayMedium = TextStyle(
+    defaultFontFamily = jostFontFamily,
+    /*displayMedium = TextStyle(
         fontFamily = jostFontFamily,
         fontWeight = FontWeight.Light,
         fontSize = 45.sp,
@@ -123,7 +114,7 @@ val Typography = Typography(
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
-    )
+    )*/
 )
 
 /*
