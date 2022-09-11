@@ -26,7 +26,6 @@ fun DropdownMenuField(
     isSingleLine: Boolean = false,
     maxLines: Int = 1,
     isError: Boolean = false,
-    showErrorMessage: Boolean = false,
     errorTextMessage: String = "",
     dropDownList: List<String>,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -79,7 +78,7 @@ fun DropdownMenuField(
             }
         }
 
-        if (showErrorMessage) {
+        if (isError && errorTextMessage.isNotEmpty()) {
             Text(
                 text = errorTextMessage,
                 color = MaterialTheme.colors.error,
