@@ -18,7 +18,6 @@ fun CustomOutlinedTextField(
     label: String = "",
     inputVal: String,
     textStyle: TextStyle = TextStyle(Color.Black),
-    colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
     isSingleLine: Boolean = false,
     maxLines: Int = 0,
     isError: Boolean = false,
@@ -35,7 +34,6 @@ fun CustomOutlinedTextField(
                 onValChange(it)
             },
             label = { Text(text = label) },
-            colors = colors,
             textStyle = textStyle,
             singleLine = isSingleLine,
             maxLines = maxLines,

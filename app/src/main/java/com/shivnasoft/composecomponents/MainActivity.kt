@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.shivnasoft.compose_components.appbars.CustomAppBar
+import com.shivnasoft.compose_components.forms.CustomOutlinedTextField
 import com.shivnasoft.compose_components.forms.DropdownMenuField
 import com.shivnasoft.composecomponents.ui.theme.ComposeComponentsTheme
 
@@ -60,6 +61,7 @@ class MainActivity : ComponentActivity() {
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
                             ) {
+                               CustomOutlinedTextField(inputVal = "", onValChange =  {}, maxLines = 1 )
                                 DropdownMenuField(
                                     modifier = Modifier.width(250.dp),
                                     fieldLabel = "Test Field",
