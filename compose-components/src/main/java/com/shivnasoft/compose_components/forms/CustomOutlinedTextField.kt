@@ -22,7 +22,6 @@ fun CustomOutlinedTextField(
     isSingleLine: Boolean = false,
     maxLines: Int = 0,
     isError: Boolean = false,
-    isErrorMessage: Boolean = false,
     errorTextMessage: String = "",
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -47,7 +46,7 @@ fun CustomOutlinedTextField(
             modifier = modifier
         )
 
-        if (isErrorMessage) {
+        if (isError && errorTextMessage.isNotEmpty()) {
             Text(
                 text = errorTextMessage,
                 color = MaterialTheme.colors.error,
