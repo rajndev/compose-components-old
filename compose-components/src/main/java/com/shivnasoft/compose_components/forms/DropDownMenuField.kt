@@ -27,6 +27,7 @@ fun DropdownMenuField(
     maxLines: Int = 1,
     isError: Boolean = false,
     errorTextMessage: String = "",
+    isReadOnly: Boolean = false,
     dropDownList: List<String>,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -54,7 +55,7 @@ fun DropdownMenuField(
                     Modifier.clickable { mExpanded.value = !mExpanded.value })
             },
             modifier = modifier,
-            readOnly = true
+            readOnly = isReadOnly
           /*  modifier = Modifier
                 .onGloballyPositioned { coordinates ->
                     mTextFieldSize.value = coordinates.size.toSize()
