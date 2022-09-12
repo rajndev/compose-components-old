@@ -41,7 +41,8 @@ fun CustomOutlinedTextField(
             keyboardOptions = keyboardOptions,
             keyboardActions = keyboardActions,
             visualTransformation = visualTransformation,
-            modifier = modifier
+            modifier = modifier,
+            readOnly = true
         )
 
         if (isError && errorTextMessage.isNotEmpty()) {

@@ -53,7 +53,8 @@ fun DropdownMenuField(
                 Icon(icon, null,
                     Modifier.clickable { mExpanded.value = !mExpanded.value })
             },
-            modifier = modifier
+            modifier = modifier,
+            readOnly = true
           /*  modifier = Modifier
                 .onGloballyPositioned { coordinates ->
                     mTextFieldSize.value = coordinates.size.toSize()
