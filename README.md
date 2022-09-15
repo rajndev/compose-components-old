@@ -145,8 +145,6 @@ fun ConditionalCircularProgressBar(
 
 ### Image Utilities: Utility functions to handle image processing
 
-#### ImageUtils Singleton Class
-
 ```kotlin
 object ImageUtils {
   fun Context.getImageDimensionsFromUri(uri: Uri): Pair<Int, Int>
@@ -166,8 +164,6 @@ object ImageUtils {
 ```
 
 ### Metrics Utilities: Utility functions to handle compenent measurements
-
-#### MetricsUtils Singleton Class
 
 ```kotlin
 object MetricsUtils {
