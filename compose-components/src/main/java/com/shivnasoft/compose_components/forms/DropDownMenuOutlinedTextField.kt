@@ -47,8 +47,6 @@ fun DropdownMenuOutlinedTextField(
             singleLine = isSingleLine,
             maxLines = maxLines,
             isError = isError,
-            keyboardOptions = keyboardOptions,
-            keyboardActions = keyboardActions,
             trailingIcon = {
                 Icon(icon, null,
                     Modifier.clickable { mExpanded.value = !mExpanded.value })
