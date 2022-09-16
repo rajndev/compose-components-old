@@ -161,7 +161,7 @@ object ImageUtils {
 }
 ```
 
-### Metrics Utilities: Utility functions to handle compenent measurements
+### Metrics Utilities: Utility functions to handle component measurements
 
 ```kotlin
 object MetricsUtils {
