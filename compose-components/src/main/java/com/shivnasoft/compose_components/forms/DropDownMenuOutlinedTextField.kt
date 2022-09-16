@@ -30,8 +30,6 @@ fun DropdownMenuOutlinedTextField(
     errorTextMessage: String = "",
     dropDownList: List<String>? = null,
     dropDownListMap: Map<Any, String>? = null,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
     onValueChanged: (Any?, String) -> Unit
 ) {
     var mExpanded = rememberSaveable { mutableStateOf(false) }
