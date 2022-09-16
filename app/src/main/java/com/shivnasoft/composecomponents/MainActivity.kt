@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.shivnasoft.compose_components.appbars.CustomAppBar
+import com.shivnasoft.compose_components.forms.CustomDropdownMenu
 import com.shivnasoft.compose_components.forms.CustomOutlinedTextField
-import com.shivnasoft.compose_components.forms.DropdownMenuField
+import com.shivnasoft.compose_components.forms.DropdownMenuOutlinedTextField
 import com.shivnasoft.composecomponents.ui.theme.ComposeComponentsTheme
 
 class MainActivity : ComponentActivity() {
@@ -61,16 +62,17 @@ class MainActivity : ComponentActivity() {
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
                             ) {
-                               CustomOutlinedTextField(inputVal = "", onValChange =  {}, maxLines = 1 )
-                                DropdownMenuField(
+//                                CustomOutlinedTextField(label = "Testing", inputVal = "", onValChange =  {}, maxLines = 1 )
+//                                CustomDropdownMenu(items = listOf("Meats", "Dairy", "Produce", "Frozen"))
+                                DropdownMenuOutlinedTextField(
                                     modifier = Modifier.width(250.dp),
                                     fieldLabel = "Test Field",
                                     inputVal = text.value,
-                                    onValueChanged = { text.value = it },
+                                    onValueChanged = { _, value -> text.value = value },
                                     dropDownList = listOf("Homer", "Bart", "Lisa")
                                 )
 
-                                Row(
+                                /*Row(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center,
                                     modifier = Modifier
@@ -79,7 +81,7 @@ class MainActivity : ComponentActivity() {
                                         .padding(10.dp)
                                 ) {
 
-                                    IconButton(onClick = { /* doSomething() */ }) {
+                                    IconButton(onClick = { *//* doSomething() *//* }) {
                                         Icon(
                                             painterResource(id = R.drawable.ic_baseline_photo_camera_24),
                                             contentDescription = "Add Item Picture",
@@ -87,7 +89,7 @@ class MainActivity : ComponentActivity() {
                                                 .size(40.dp)
                                         )
                                     }
-                                }
+                                }*/
                             }
 
                           MainScreen()

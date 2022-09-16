@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -19,7 +20,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DropdownMenuField(
+fun DropdownMenuOutlinedTextField(
     modifier: Modifier = Modifier,
     fieldLabel: String,
     inputVal: String,
@@ -27,11 +28,11 @@ fun DropdownMenuField(
     maxLines: Int = 1,
     isError: Boolean = false,
     errorTextMessage: String = "",
-    isReadOnly: Boolean = false,
-    dropDownList: List<String>,
+    dropDownList: List<String>? = null,
+    dropDownListMap: Map<Any, String>? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
-    onValueChanged: (String) -> Unit
+    onValueChanged: (Any?, String) -> Unit
 ) {
     var mExpanded = rememberSaveable { mutableStateOf(false) }
     var mTextFieldSize = remember { mutableStateOf(Size.Zero) }
@@ -43,7 +44,7 @@ fun DropdownMenuField(
     Column {
         OutlinedTextField(
             value = inputVal,
-            onValueChange = { onValueChanged(it) },
+            onValueChange = { },
             label = { Text(text = fieldLabel) },
             singleLine = isSingleLine,
             maxLines = maxLines,
@@ -55,7 +56,7 @@ fun DropdownMenuField(
                     Modifier.clickable { mExpanded.value = !mExpanded.value })
             },
             modifier = modifier,
-            readOnly = isReadOnly
+            readOnly = true
           /*  modifier = Modifier
                 .onGloballyPositioned { coordinates ->
                     mTextFieldSize.value = coordinates.size.toSize()
@@ -70,12 +71,26 @@ fun DropdownMenuField(
             /*modifier = Modifier
                 .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })*/
         ) {
-            dropDownList.forEach { label ->
-                DropdownMenuItem(onClick = {
-                    onValueChanged(label)
-                    mExpanded.value = false
-                }) {
-                    Text(text = label)
+            when {
+                dropDownList != null -> {
+                    dropDownList.forEach { label ->
+                        DropdownMenuItem(onClick = {
+                            onValueChanged(null, label)
+                            mExpanded.value = false
+                        }) {
+                            Text(text = label)
+                        }
+                    }
+                }
+                dropDownListMap != null -> {
+                    dropDownListMap.forEach { (key, value) ->
+                        DropdownMenuItem(onClick = {
+                            onValueChanged(key, value)
+                            mExpanded.value = false
+                        }) {
+                            Text(text = value)
+                        }
+                    }
                 }
             }
         }
