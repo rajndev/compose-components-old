@@ -80,15 +80,6 @@ class MainActivity : ComponentActivity() {
 
 
 //                                CustomDropdownMenu(items = listOf("Meats", "Dairy", "Produce", "Frozen"))
-
-                                DropdownMenuOutlinedTextField(
-                                    modifier = Modifier.weight(4f),
-                                    fieldLabel = "Test Field",
-                                    inputVal = text.value,
-                                    onValueChanged = { _, value -> text.value = value },
-                                    dropDownList = listOf("Homer", "Bart", "Lisa")
-                                )
-
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.Center,
@@ -106,6 +97,16 @@ class MainActivity : ComponentActivity() {
                                             })
                                     )
                                 }
+
+                                DropdownMenuOutlinedTextField(
+                                    containerModifier = Modifier.weight(4f),
+                                    fieldLabel = "Test Field",
+                                    inputVal = text.value,
+                                    onValueChanged = { _, value -> text.value = value },
+                                    dropDownList = listOf("Homer", "Bart", "Lisa")
+                                )
+
+
 
                                 /*Row(
                                     verticalAlignment = Alignment.CenterVertically,

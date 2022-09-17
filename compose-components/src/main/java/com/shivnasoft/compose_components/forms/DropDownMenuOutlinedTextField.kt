@@ -1,6 +1,7 @@
 package com.shivnasoft.compose_components.forms
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
@@ -20,7 +21,8 @@ import androidx.compose.ui.unit.toSize
 
 @Composable
 fun DropdownMenuOutlinedTextField(
-    modifier: Modifier = Modifier,
+    containerModifier: Modifier = Modifier,
+    fieldModifier: Modifier = Modifier,
     fieldLabel: String,
     inputVal: String,
     isSingleLine: Boolean = false,
@@ -38,63 +40,64 @@ fun DropdownMenuOutlinedTextField(
         Icons.Filled.KeyboardArrowUp
     else
         Icons.Filled.KeyboardArrowDown
+    Column(modifier = containerModifier) {
+        OutlinedTextField(
+            value = inputVal,
+            onValueChange = { },
+            label = { Text(text = fieldLabel) },
+            singleLine = isSingleLine,
+            maxLines = maxLines,
+            isError = isError,
+            trailingIcon = {
+                Icon(icon, null,
+                    Modifier.clickable { mExpanded.value = !mExpanded.value })
+            },
+            //modifier = modifier,
+            readOnly = true,
+            modifier = Modifier
+                .onGloballyPositioned { coordinates ->
+                    mTextFieldSize.value = coordinates.size.toSize()
+                }
+                .then(fieldModifier)
+        )
 
-    OutlinedTextField(
-        value = inputVal,
-        onValueChange = { },
-        label = { Text(text = fieldLabel) },
-        singleLine = isSingleLine,
-        maxLines = maxLines,
-        isError = isError,
-        trailingIcon = {
-            Icon(icon, null,
-                Modifier.clickable { mExpanded.value = !mExpanded.value })
-        },
-        //modifier = modifier,
-        readOnly = true,
-        modifier = Modifier
-              .onGloballyPositioned { coordinates ->
-                  mTextFieldSize.value = coordinates.size.toSize()
-              }
-              .then(modifier)
-    )
-
-    DropdownMenu(
-        expanded = mExpanded.value,
-        onDismissRequest = { mExpanded.value = false },
-        modifier = Modifier
-            .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
-    ) {
-        when {
-            dropDownList != null -> {
-                dropDownList.forEach { label ->
-                    DropdownMenuItem(onClick = {
-                        onValueChanged(null, label)
-                        mExpanded.value = false
-                    }) {
-                        Text(text = label)
+        DropdownMenu(
+            expanded = mExpanded.value,
+            onDismissRequest = { mExpanded.value = false },
+            modifier = Modifier
+                .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
+        ) {
+            when {
+                dropDownList != null -> {
+                    dropDownList.forEach { label ->
+                        DropdownMenuItem(onClick = {
+                            onValueChanged(null, label)
+                            mExpanded.value = false
+                        }) {
+                            Text(text = label)
+                        }
                     }
                 }
-            }
-            dropDownListMap != null -> {
-                dropDownListMap.forEach { (key, value) ->
-                    DropdownMenuItem(onClick = {
-                        onValueChanged(key, value)
-                        mExpanded.value = false
-                    }) {
-                        Text(text = value)
+                dropDownListMap != null -> {
+                    dropDownListMap.forEach { (key, value) ->
+                        DropdownMenuItem(onClick = {
+                            onValueChanged(key, value)
+                            mExpanded.value = false
+                        }) {
+                            Text(text = value)
+                        }
                     }
                 }
             }
         }
-    }
 
-    if (isError && errorTextMessage.isNotEmpty()) {
-        Text(
-            text = errorTextMessage,
-            color = MaterialTheme.colors.error,
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier.padding(start = 5.dp, bottom = 5.dp)
-        )
+        if (isError && errorTextMessage.isNotEmpty()) {
+            Text(
+                text = errorTextMessage,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(start = 5.dp, bottom = 5.dp)
+            )
+        }
     }
 }
