@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -13,6 +16,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -55,22 +61,51 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     content = {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.Center,
-                            ) {
-//                                CustomOutlinedTextField(label = "Testing", inputVal = "", onValChange =  {}, maxLines = 1 )
+                        Column(modifier = Modifier.padding(10.dp)) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                              /*  Row() {
+                                    Column(
+                                        Modifier.weight(1f).background(Blue)){
+                                        Text(text = "Weight = 1", color = Color.White)
+                                    }
+                                    Column(
+                                        Modifier.weight(4f).background(Yellow)
+                                    ) {
+                                        Text(text = "Weight = 2")
+                                    }
+                                }
+*/
+
+                               // CustomOutlinedTextField(modifier = Modifier.weight(2f), label = "Testing", inputVal = "", onValChange =  {}, maxLines = 1 )
+
+
 //                                CustomDropdownMenu(items = listOf("Meats", "Dairy", "Produce", "Frozen"))
+
                                 DropdownMenuOutlinedTextField(
-                                    modifier = Modifier.width(250.dp),
+                                    modifier = Modifier.weight(4f),
                                     fieldLabel = "Test Field",
                                     inputVal = text.value,
                                     onValueChanged = { _, value -> text.value = value },
                                     dropDownList = listOf("Homer", "Bart", "Lisa")
                                 )
+
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.Center,
+                                    modifier = Modifier
+                                        .weight(2f)
+                                        .height(55.dp)
+                                        .padding(top = 8.dp)
+                                ) {
+                                    Icon(
+                                        painterResource(id = R.drawable.ic_baseline_photo_camera_24),
+                                        contentDescription = "Add Item Picture",
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                            .clickable(onClick = {
+                                            })
+                                    )
+                                }
 
                                 /*Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -92,7 +127,7 @@ class MainActivity : ComponentActivity() {
                                 }*/
                             }
 
-                          MainScreen()
+                          //MainScreen()
                         }
 
                         /*LazyColumn(
