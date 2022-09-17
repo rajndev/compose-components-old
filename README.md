@@ -78,11 +78,11 @@ fun CustomOutlinedTextField(
 )
 ```
 
-### DropDownMenuField: A customizeable dropdownmenu integrated into an `outlinedTextField`
+### DropDownMenuOutlinedTextField: A customizeable dropdownmenu integrated into an `outlinedTextField`
 
 ```kotlin
 @Composable
-fun DropdownMenuField(
+fun DropdownMenuOutlinedTextField(
     modifier: Modifier = Modifier,
     fieldLabel: String,
     inputVal: String,
@@ -90,12 +90,10 @@ fun DropdownMenuField(
     maxLines: Int = 1,
     isError: Boolean = false,
     errorTextMessage: String = "",
-    isReadOnly: Boolean = false,
-    dropDownList: List<String>,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
-    onValueChanged: (String) -> Unit
-) 
+    dropDownList: List<String>? = null,
+    dropDownListMap: Map<Any, String>? = null,
+    onValueChanged: (Any?, String) -> Unit
+)
 ```
 
 ### AppImage: A customizeable image container
@@ -163,7 +161,7 @@ object ImageUtils {
 }
 ```
 
-### Metrics Utilities: Utility functions to handle compenent measurements
+### Metrics Utilities: Utility functions to handle component measurements
 
 ```kotlin
 object MetricsUtils {
