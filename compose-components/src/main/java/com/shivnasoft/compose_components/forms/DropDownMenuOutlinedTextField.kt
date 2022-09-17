@@ -96,7 +96,7 @@ fun DropdownMenuOutlinedTextField(
                 text = errorTextMessage,
                 color = MaterialTheme.colors.error,
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier.padding(start = 5.dp, bottom = 5.dp)
+                modifier = Modifier.padding(5.dp)
             )
         }
     }

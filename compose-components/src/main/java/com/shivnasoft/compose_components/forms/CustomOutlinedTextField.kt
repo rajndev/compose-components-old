@@ -1,5 +1,6 @@
 package com.shivnasoft.compose_components.forms
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -15,7 +16,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CustomOutlinedTextField(
-    modifier: Modifier = Modifier,
+    containerModifier: Modifier = Modifier,
+    fieldModifier: Modifier = Modifier,
     label: String = "",
     inputVal: String,
     textStyle: TextStyle = TextStyle(Color.Black),
@@ -29,29 +31,31 @@ fun CustomOutlinedTextField(
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     onValChange: (String) -> Unit
 ) {
-    OutlinedTextField(
-        value = inputVal,
-        onValueChange = {
-            onValChange(it)
-        },
-        label = { Text(text = label) },
-        textStyle = textStyle,
-        singleLine = isSingleLine,
-        maxLines = maxLines,
-        isError = isError,
-        keyboardOptions = keyboardOptions,
-        keyboardActions = keyboardActions,
-        visualTransformation = visualTransformation,
-        modifier = modifier,
-        readOnly = isReadOnly
-    )
-
-    if (isError && errorTextMessage.isNotEmpty()) {
-        Text(
-            text = errorTextMessage,
-            color = MaterialTheme.colors.error,
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier.padding(start = 5.dp)
+    Column(modifier = containerModifier) {
+        OutlinedTextField(
+            value = inputVal,
+            onValueChange = {
+                onValChange(it)
+            },
+            label = { Text(text = label) },
+            textStyle = textStyle,
+            singleLine = isSingleLine,
+            maxLines = maxLines,
+            isError = isError,
+            keyboardOptions = keyboardOptions,
+            keyboardActions = keyboardActions,
+            visualTransformation = visualTransformation,
+            modifier = fieldModifier,
+            readOnly = isReadOnly
         )
+
+        if (isError && errorTextMessage.isNotEmpty()) {
+            Text(
+                text = errorTextMessage,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(5.dp)
+            )
+        }
     }
 }

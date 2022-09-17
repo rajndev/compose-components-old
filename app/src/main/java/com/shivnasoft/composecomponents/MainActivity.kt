@@ -76,7 +76,6 @@ class MainActivity : ComponentActivity() {
                                 }
 */
 
-                               // CustomOutlinedTextField(modifier = Modifier.weight(2f), label = "Testing", inputVal = "", onValChange =  {}, maxLines = 1 )
 
 
 //                                CustomDropdownMenu(items = listOf("Meats", "Dairy", "Produce", "Frozen"))
@@ -98,13 +97,15 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
 
-                                DropdownMenuOutlinedTextField(
+                                CustomOutlinedTextField(containerModifier = Modifier.weight(2f), label = "Testing", inputVal = "", onValChange =  {}, maxLines = 1, isError = true, errorTextMessage = "fdsafdsafasfd")
+
+                                /*DropdownMenuOutlinedTextField(
                                     containerModifier = Modifier.weight(4f),
                                     fieldLabel = "Test Field",
                                     inputVal = text.value,
                                     onValueChanged = { _, value -> text.value = value },
                                     dropDownList = listOf("Homer", "Bart", "Lisa")
-                                )
+                                )*/
 
 
 
