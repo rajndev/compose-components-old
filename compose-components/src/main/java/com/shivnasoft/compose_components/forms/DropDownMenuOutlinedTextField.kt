@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 
@@ -31,6 +33,7 @@ fun DropdownMenuOutlinedTextField(
     errorTextMessage: String = "",
     dropDownList: List<String>? = null,
     dropDownListMap: Map<Any, String>? = null,
+    dropDownListRoundedCornerAmount: Dp = 0.dp,
     onValueChanged: (Any?, String) -> Unit
 ) {
     var mExpanded = rememberSaveable { mutableStateOf(false) }
@@ -61,30 +64,32 @@ fun DropdownMenuOutlinedTextField(
                 .then(fieldModifier)
         )
 
-        DropdownMenu(
-            expanded = mExpanded.value,
-            onDismissRequest = { mExpanded.value = false },
-            modifier = Modifier
-                .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
-        ) {
-            when {
-                dropDownList != null -> {
-                    dropDownList.forEach { label ->
-                        DropdownMenuItem(onClick = {
-                            onValueChanged(null, label)
-                            mExpanded.value = false
-                        }) {
-                            Text(text = label)
+        MaterialTheme(shapes = MaterialTheme.shapes.copy(medium = RoundedCornerShape(dropDownListRoundedCornerAmount))) {
+            DropdownMenu(
+                expanded = mExpanded.value,
+                onDismissRequest = { mExpanded.value = false },
+                modifier = Modifier
+                    .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
+            ) {
+                when {
+                    dropDownList != null -> {
+                        dropDownList.forEach { label ->
+                            DropdownMenuItem(onClick = {
+                                onValueChanged(null, label)
+                                mExpanded.value = false
+                            }) {
+                                Text(text = label)
+                            }
                         }
                     }
-                }
-                dropDownListMap != null -> {
-                    dropDownListMap.forEach { (key, value) ->
-                        DropdownMenuItem(onClick = {
-                            onValueChanged(key, value)
-                            mExpanded.value = false
-                        }) {
-                            Text(text = value)
+                    dropDownListMap != null -> {
+                        dropDownListMap.forEach { (key, value) ->
+                            DropdownMenuItem(onClick = {
+                                onValueChanged(key, value)
+                                mExpanded.value = false
+                            }) {
+                                Text(text = value)
+                            }
                         }
                     }
                 }
