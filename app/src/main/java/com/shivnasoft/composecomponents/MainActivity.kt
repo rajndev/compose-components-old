@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
             ComposeComponentsTheme {
                 navController = rememberAnimatedNavController()
                 val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-
+                val test: MutableMap<Any, String> = mutableMapOf()
                 val text = rememberSaveable { mutableStateOf("") }
 
                 Scaffold(
@@ -103,7 +103,7 @@ class MainActivity : ComponentActivity() {
                                     fieldLabel = "Test Field",
                                     inputVal = text.value,
                                     onValueChanged = { _, value -> text.value = value },
-                                    dropDownList = listOf("Homer", "Bart", "Lisa")
+                                    dropDownListMap = test
                                 )
 
 

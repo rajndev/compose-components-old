@@ -31,8 +31,8 @@ fun DropdownMenuOutlinedTextField(
     maxLines: Int = 1,
     isError: Boolean = false,
     errorTextMessage: String = "",
-    dropDownList: List<String>? = null,
-    dropDownListMap: Map<Any, String>? = null,
+    dropDownList: List<String> = listOf(),
+    dropDownListMap: Map<Any, String> = mutableMapOf(),
     dropDownListRoundedCornerAmount: Dp = 0.dp,
     onValueChanged: (Any?, String) -> Unit
 ) {
@@ -72,7 +72,7 @@ fun DropdownMenuOutlinedTextField(
                     .width(with(LocalDensity.current) { mTextFieldSize.value.width.toDp() })
             ) {
                 when {
-                    dropDownList != null -> {
+                    dropDownList.isNotEmpty() -> {
                         dropDownList.forEach { label ->
                             DropdownMenuItem(onClick = {
                                 onValueChanged(null, label)
@@ -82,7 +82,7 @@ fun DropdownMenuOutlinedTextField(
                             }
                         }
                     }
-                    dropDownListMap != null -> {
+                    dropDownListMap.isNotEmpty() -> {
                         dropDownListMap.forEach { (key, value) ->
                             DropdownMenuItem(onClick = {
                                 onValueChanged(key, value)
@@ -92,6 +92,16 @@ fun DropdownMenuOutlinedTextField(
                             }
                         }
                     }
+                    /*dropDownListMutableMap.isNotEmpty() -> {
+                        dropDownListMutableMap.forEach { (key, value) ->
+                            DropdownMenuItem(onClick = {
+                                onValueChanged(key, value)
+                                mExpanded.value = false
+                            }) {
+                                Text(text = value)
+                            }
+                        }
+                    }*/
                 }
             }
         }

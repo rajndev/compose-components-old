@@ -11,15 +11,15 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun MorevertDropdownMenu(
-    dropDownList: List<String>? = null,
-    dropDownListMap: Map<Any, String>? = null,
+    dropDownList: List<String> = listOf(),
+    dropDownListMap: Map<Any, String> = mapOf(),
     dropDownListRoundedCornerAmount: Dp = 0.dp,
     onMenuItemClick: (Any?, String) -> Unit
 ) {
-    var showMenu by remember { mutableStateOf(false) }
+    val showMenu = remember { mutableStateOf(false) }
     Column {
         IconButton(onClick = {
-            showMenu = !showMenu
+            showMenu.value = !showMenu.value
         }) {
             Icon(
                 imageVector = Icons.Outlined.MoreVert,
@@ -34,15 +34,15 @@ fun MorevertDropdownMenu(
             )
         ) {
             DropdownMenu(
-                expanded = showMenu,
-                onDismissRequest = { showMenu = false }
+                expanded = showMenu.value,
+                onDismissRequest = { showMenu.value = false }
             ) {
                 when {
                     dropDownList != null -> {
                         dropDownList.forEach { label ->
                             DropdownMenuItem(onClick = {
                                 onMenuItemClick(null, label)
-                                showMenu = false
+                                showMenu.value = false
                             }) {
                                 Text(text = label)
                             }
@@ -52,13 +52,37 @@ fun MorevertDropdownMenu(
                         dropDownListMap.forEach { (key, value) ->
                             DropdownMenuItem(onClick = {
                                 onMenuItemClick(key, value)
-                                showMenu = false
+                                showMenu.value = false
                             }) {
                                 Text(text = value)
                             }
                         }
                     }
                 }
+
+                when {
+                    dropDownList.isNotEmpty() -> {
+                        dropDownList.forEach { label ->
+                            DropdownMenuItem(onClick = {
+                                onMenuItemClick(null, label)
+                                showMenu.value = false
+                            }) {
+                                Text(text = label)
+                            }
+                        }
+                    }
+                    dropDownListMap.isNotEmpty() -> {
+                        dropDownListMap.forEach { (key, value) ->
+                            DropdownMenuItem(onClick = {
+                                onMenuItemClick(key, value)
+                                showMenu.value = false
+                            }) {
+                                Text(text = value)
+                            }
+                        }
+                    }
+                }
+
             }
         }
     }
