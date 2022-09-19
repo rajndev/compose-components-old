@@ -92,16 +92,6 @@ fun DropdownMenuOutlinedTextField(
                             }
                         }
                     }
-                    /*dropDownListMutableMap.isNotEmpty() -> {
-                        dropDownListMutableMap.forEach { (key, value) ->
-                            DropdownMenuItem(onClick = {
-                                onValueChanged(key, value)
-                                mExpanded.value = false
-                            }) {
-                                Text(text = value)
-                            }
-                        }
-                    }*/
                 }
             }
         }

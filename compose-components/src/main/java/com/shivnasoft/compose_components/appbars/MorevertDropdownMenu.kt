@@ -38,29 +38,6 @@ fun MorevertDropdownMenu(
                 onDismissRequest = { showMenu.value = false }
             ) {
                 when {
-                    dropDownList != null -> {
-                        dropDownList.forEach { label ->
-                            DropdownMenuItem(onClick = {
-                                onMenuItemClick(null, label)
-                                showMenu.value = false
-                            }) {
-                                Text(text = label)
-                            }
-                        }
-                    }
-                    dropDownListMap != null -> {
-                        dropDownListMap.forEach { (key, value) ->
-                            DropdownMenuItem(onClick = {
-                                onMenuItemClick(key, value)
-                                showMenu.value = false
-                            }) {
-                                Text(text = value)
-                            }
-                        }
-                    }
-                }
-
-                when {
                     dropDownList.isNotEmpty() -> {
                         dropDownList.forEach { label ->
                             DropdownMenuItem(onClick = {
@@ -82,7 +59,6 @@ fun MorevertDropdownMenu(
                         }
                     }
                 }
-
             }
         }
     }
