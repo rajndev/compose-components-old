@@ -1,27 +1,36 @@
 package com.shivnasoft.composecomponents
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.compiler.plugins.kotlin.ComposeFqNames.remember
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.shivnasoft.compose_components.appbars.CustomAppBar
 import com.shivnasoft.compose_components.appbars.MorevertDropdownMenu
 import com.shivnasoft.compose_components.forms.CustomOutlinedTextField
 import com.shivnasoft.compose_components.forms.DropdownMenuOutlinedTextField
+import com.shivnasoft.compose_components.images.AppThumbnailImage
+import com.shivnasoft.compose_components.images.ImageDialog
 import com.shivnasoft.composecomponents.ui.theme.ComposeComponentsTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,6 +46,8 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
                 val test: MutableMap<Any, String> = mutableMapOf()
                 val text = rememberSaveable { mutableStateOf("") }
+                val imgUri = rememberSaveable { mutableStateOf(Uri.EMPTY) }
+                val showImageDialog = remember { mutableStateOf(false ) }
 
                 Scaffold(
                     topBar = {
@@ -128,7 +139,21 @@ class MainActivity : ComponentActivity() {
                                 }*/
                             }
 
-                          //MainScreen()
+
+
+                          MainScreen(
+                              onImageEdited =  {
+                                  imgUri.value = it
+                              }
+                          )
+
+                            AppThumbnailImage(
+                                Modifier.clip(CircleShape),
+                                onImageClick = { showImageDialog.value = true },
+                                imageUri = imgUri.value
+                            )
+                            
+                            ImageDialog(showDialog = showImageDialog, imageUri = imgUri.value)
                         }
 
                         /*LazyColumn(

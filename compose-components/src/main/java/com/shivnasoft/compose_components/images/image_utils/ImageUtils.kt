@@ -52,38 +52,38 @@ object ImageUtils {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
-    suspend fun Context.compressImage(imageUri: Uri, destFolder: String, filePrefix: String): Uri {
-        var newUri: Uri = Uri.EMPTY
-        try {
-            val originalFile: File = UriUtils.uri2File(imageUri)
-            val timestamp = System.currentTimeMillis()
-            val directory =
-                File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), destFolder)
-            if (!directory.exists()) directory.mkdirs()
+@RequiresApi(Build.VERSION_CODES.Q)
+suspend fun Context.compressImage(imageUri: Uri, destFolder: String, filePrefix: String): Uri {
+    var newUri: Uri = Uri.EMPTY
+    try {
+        val originalFile: File = UriUtils.uri2File(imageUri)
+        val timestamp = System.currentTimeMillis()
+        val directory =
+            File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES), destFolder)
+        if (!directory.exists()) directory.mkdirs()
 
-            val newFile = File(
-                directory.absolutePath,"${filePrefix}_${timestamp}" + ".jpg"
-            )
+        val newFile = File(
+            directory.absolutePath,"${filePrefix}_${timestamp}" + ".jpg"
+        )
 
-            newFile.createNewFile()
+        newFile.createNewFile()
 
-            Compressor.compress(this, originalFile) {
-                default(format = Bitmap.CompressFormat.JPEG)
-                destination(newFile)
-            }
-
-            newUri = FileProvider.getUriForFile(
-                this,
-                applicationContext.packageName + ".fileprovider",
-                newFile
-            )
-        } catch (e: Exception) {
-            Toast.makeText(this, "Unable to process your image.", Toast.LENGTH_SHORT).show()
+        Compressor.compress(this, originalFile) {
+            default(format = Bitmap.CompressFormat.JPEG)
+            destination(newFile)
         }
 
-        return newUri
+        newUri = FileProvider.getUriForFile(
+            this,
+            applicationContext.packageName + ".fileprovider",
+            newFile
+        )
+    } catch (e: Exception) {
+        Toast.makeText(this, "Unable to process your image.", Toast.LENGTH_SHORT).show()
     }
+
+    return newUri
+}
 
     @RequiresApi(Build.VERSION_CODES.Q)
     fun Context.createImageThumbnail(uri: Uri, destFolder: String, filePrefix: String): Uri {

@@ -28,7 +28,7 @@ import coil.compose.SubcomposeAsyncImageScope
 import com.shivnasoft.compose_components.R
 
 @Composable
-fun AppImage(
+fun AppCardImage(
     cardModifier: Modifier,
     cardElevationAmount: Dp,
     imageModifier: Modifier = Modifier,

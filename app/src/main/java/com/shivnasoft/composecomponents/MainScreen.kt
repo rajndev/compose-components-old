@@ -21,11 +21,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.shivnasoft.compose_components.images.AppImage
+import com.shivnasoft.compose_components.images.AppCardImage
 import com.shivnasoft.compose_components.images.ImageDialog
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onImageEdited: (Uri) -> Unit
+) {
     val editedImageUri = rememberSaveable { mutableStateOf(Uri.EMPTY) }
     val isImageEdited = rememberSaveable { mutableStateOf(false) }
     val context = LocalContext.current
@@ -75,7 +77,8 @@ fun MainScreen() {
                 .align(Alignment.CenterHorizontally)
         ) {
             if (isImageEdited.value) {
-                AppImage(
+                onImageEdited(editedImageUri.value)
+                AppCardImage(
                     cardModifier = Modifier.size(200.dp),
                     cardElevationAmount = 8.dp,
                     imageModifier = Modifier.padding(4.dp),
