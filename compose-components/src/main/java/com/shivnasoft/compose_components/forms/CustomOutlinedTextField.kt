@@ -26,6 +26,7 @@ fun CustomOutlinedTextField(
     isError: Boolean = false,
     errorTextMessage: String = "",
     isReadOnly: Boolean = false,
+    enabled: Boolean = true,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -46,7 +47,8 @@ fun CustomOutlinedTextField(
             keyboardActions = keyboardActions,
             visualTransformation = visualTransformation,
             modifier = fieldModifier,
-            readOnly = isReadOnly
+            readOnly = isReadOnly,
+            enabled = enabled
         )
 
         if (isError && errorTextMessage.isNotEmpty()) {
